@@ -17,6 +17,13 @@ eliza.load('doctor.txt')
 @app.post("/")
 async def create_item(dialogRequest: DialogRequest):
     print("inside with item", dialogRequest)
+
+    # Call another api
+    # Do something fun
+    # Compare results
+    # Return best result
+    # Backup is eliza
+
     response = eliza.runFromApi(dialogRequest.queryResult['queryText'])
     print("the response is", response)
 
