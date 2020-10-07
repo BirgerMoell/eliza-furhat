@@ -7,15 +7,10 @@ class Item(BaseModel):
     text: str
 
 app = FastAPI()
-
-@app.post("eliza")
-async def create_item(item: Item):
-    
-    return item
+eliza = Eliza()
+eliza.load('doctor.txt')
 
 def read_root():
-    eliza = Eliza()
-    eliza.load('doctor.txt')
     if not True:
         response = eliza.getInitial()
     else:
@@ -42,3 +37,7 @@ def read_root():
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Optional[str] = None):
     return {"item_id": item_id, "q": q}
+
+@app.post("/eliza")
+async def create_item(item: Item):
+    return eliza.runFromApi(item.text)
