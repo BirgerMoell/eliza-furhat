@@ -67,6 +67,7 @@ class DialogResponse(BaseModel):
 class Item(BaseModel):
     text: str
 
+
 app = FastAPI()
 eliza = Eliza()
 eliza.load('doctor.txt')
